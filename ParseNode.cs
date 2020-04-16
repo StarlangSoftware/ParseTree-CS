@@ -799,8 +799,8 @@ namespace ParseTree
         }
 
         /**
-         * <summary> Swaps the given child node of this node with the previous sibling of that given node. If the given node is the</summary>
-         * leftmost child, it swaps with the last node.
+         * <summary> Swaps the given child node of this node with the previous sibling of that given node. If the given node is the
+         * leftmost child, it swaps with the last node.</summary>
          * <param name="node">Node to be swapped.</param>
          */
         public void MoveLeft(ParseNode node)
@@ -848,8 +848,8 @@ namespace ParseTree
         }
 
         /**
-         * <summary> Swaps the given child node of this node with the next sibling of that given node. If the given node is the</summary>
-         * rightmost child, it swaps with the first node.
+         * <summary> Swaps the given child node of this node with the next sibling of that given node. If the given node is the
+         * rightmost child, it swaps with the first node.</summary>
          * <param name="node">Node to be swapped.</param>
          */
         public void MoveRight(ParseNode node)

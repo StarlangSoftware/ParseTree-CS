@@ -8,11 +8,11 @@ namespace ParseTree
         private readonly ParseNode _rootNode;
 
         /**
-         * Constructor for the NodeCollector class. NodeCollector's main aim is to collect a set of ParseNode's from a
+         * <summary> Constructor for the NodeCollector class. NodeCollector's main aim is to collect a set of ParseNode's from a
          * subtree rooted at rootNode, where the ParseNode's satisfy a given NodeCondition, which is implemented by other
-         * interface class.
-         * @param rootNode Root node of the subtree
-         * @param condition The condition interface for which all nodes in the subtree rooted at rootNode will be checked
+         * interface class.</summary>
+         * <param name="rootNode">Root node of the subtree</param>
+         * <param name="condition">The condition interface for which all nodes in the subtree rooted at rootNode will be checked</param>
          */
         public NodeCollector(ParseNode rootNode, NodeCondition.NodeCondition condition)
         {
@@ -21,9 +21,9 @@ namespace ParseTree
         }
 
         /**
-         * Private recursive method to check all descendants of the parseNode, if they ever satisfy the given node condition
-         * @param parseNode Root node of the subtree
-         * @param collected The {@link ArrayList} where the collected ParseNode's will be stored.
+         * <summary> Private recursive method to check all descendants of the parseNode, if they ever satisfy the given node condition</summary>
+         * <param name="parseNode">Root node of the subtree</param>
+         * <param name="collected">The {@link ArrayList} where the collected ParseNode's will be stored.</param>
          */
         private void CollectNodes(ParseNode parseNode, List<ParseNode> collected)
         {
@@ -41,8 +41,8 @@ namespace ParseTree
         }
 
         /**
-         * Collects and returns all ParseNode's satisfying the node condition.
-         * @return All ParseNode's satisfying the node condition.
+         * <summary> Collects and returns all ParseNode's satisfying the node condition.</summary>
+         * <returns>All ParseNode's satisfying the node condition.</returns>
          */
         public List<ParseNode> Collect()
         {

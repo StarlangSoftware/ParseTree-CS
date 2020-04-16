@@ -3,9 +3,9 @@ namespace ParseTree.NodeCondition
     public class IsEnglishLeaf : IsLeaf
     {
         /**
-         * Implemented node condition for English leaf node.
-         * @param parseNode Checked node.
-         * @return If the node is a leaf node and is not a dummy node, returns true; false otherwise.
+         * <summary> Implemented node condition for English leaf node.</summary>
+         * <param name="parseNode">Checked node.</param>
+         * <returns>If the node is a leaf node and is not a dummy node, returns true; false otherwise.</returns>
          */
         public new bool Satisfies(ParseNode parseNode)
         {
