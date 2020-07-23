@@ -1,6 +1,6 @@
 namespace ParseTree.NodeCondition
 {
-    public class IsEnglishLeaf : IsLeaf
+    public class IsEnglishLeaf : IsLeaf, NodeCondition
     {
         /**
          * <summary> Implemented node condition for English leaf node.</summary>

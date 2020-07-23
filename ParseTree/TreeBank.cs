@@ -76,7 +76,7 @@ namespace ParseTree
             parseTrees = new List<ParseTree>();
             for (var i = from; i <= to; i++)
             {
-                parseTrees.Add(new ParseTree(folder + "/" + string.Format("{0:F4}", i) + pattern));
+                parseTrees.Add(new ParseTree(folder + "/" + string.Format("{0:D4}", i) + pattern));
             }
         }
 

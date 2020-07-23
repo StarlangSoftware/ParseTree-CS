@@ -90,7 +90,8 @@ namespace ParseTree
                 data = new Symbol(line.Substring(1, line.IndexOf(" ") - 1));
                 if (line.IndexOf(")") == line.LastIndexOf(")"))
                 {
-                    children.Add(new ParseNode(this, line.Substring(line.IndexOf(" ") + 1, line.IndexOf(")") - line.IndexOf(" ") - 1), true));
+                    children.Add(new ParseNode(this,
+                        line.Substring(line.IndexOf(" ") + 1, line.IndexOf(")") - line.IndexOf(" ") - 1), true));
                 }
                 else
                 {
@@ -668,41 +669,36 @@ namespace ParseTree
                 }
                 else
                 {
-                    if (data.GetName().Equals(",") || data.GetName().Equals(".") ||
-                        data.GetName().Equals(";")
-                        || data.GetName().Contains("*") || data.GetName().Equals("at") ||
-                        data.GetName().Equals("the")
-                        || data.GetName().Equals("to") || data.GetName().Equals("a") ||
-                        data.GetName().Equals("an")
-                        || data.GetName().Equals("not") || data.GetName().Equals("is") ||
-                        data.GetName().Equals("was")
-                        || data.GetName().Equals("were") || data.GetName().Equals("have") ||
-                        data.GetName().Equals("had")
-                        || data.GetName().Equals("has") || data.GetName().Equals("!") ||
-                        data.GetName().Equals("?")
-                        || data.GetName().Equals("by") || data.GetName().Equals("at") ||
-                        data.GetName().Equals("on")
-                        || data.GetName().Equals("off") || data.GetName().Equals("'s") ||
-                        data.GetName().Equals("n't")
-                        || data.GetName().Equals("can") || data.GetName().Equals("could") ||
-                        data.GetName().Equals("may")
-                        || data.GetName().Equals("might") || data.GetName().Equals("will") ||
-                        data.GetName().Equals("would")
-                        || data.GetName().Equals("''") || data.GetName().Equals("'") ||
-                        data.GetName().Equals("\"")
-                        || data.GetName().Equals("\"\"") || data.GetName().Equals("as") ||
-                        data.GetName().Equals("with")
-                        || data.GetName().Equals("for") || data.GetName().Equals("will") ||
-                        data.GetName().Equals("would")
-                        || data.GetName().Equals("than") || data.GetName().Equals("``") ||
-                        data.GetName().Equals("$")
-                        || data.GetName().Equals("and") || data.GetName().Equals("or") ||
-                        data.GetName().Equals("of")
-                        || data.GetName().Equals("are") || data.GetName().Equals("be") ||
-                        data.GetName().Equals("been")
-                        || data.GetName().Equals("do") || data.GetName().Equals("few") ||
-                        data.GetName().Equals("there")
-                        || data.GetName().Equals("up") || data.GetName().Equals("down"))
+                    if (Word.IsPunctuation(data.GetName()) ||
+                        data.GetName().Contains("*") || data.GetName().ToLower().Equals("at") ||
+                        data.GetName().ToLower().Equals("the") || data.GetName().ToLower().Equals("to") ||
+                        data.GetName().ToLower().Equals("a") ||
+                        data.GetName().ToLower().Equals("an") || data.GetName().ToLower().Equals("not") ||
+                        data.GetName().ToLower().Equals("is") ||
+                        data.GetName().ToLower().Equals("was")
+                        || data.GetName().ToLower().Equals("were") || data.GetName().ToLower().Equals("have") ||
+                        data.GetName().ToLower().Equals("had")
+                        || data.GetName().ToLower().Equals("has")
+                        || data.GetName().ToLower().Equals("by") || data.GetName().ToLower().Equals("at") ||
+                        data.GetName().ToLower().Equals("on")
+                        || data.GetName().ToLower().Equals("off") || data.GetName().ToLower().Equals("'s") ||
+                        data.GetName().ToLower().Equals("n't")
+                        || data.GetName().ToLower().Equals("can") || data.GetName().ToLower().Equals("could") ||
+                        data.GetName().ToLower().Equals("may")
+                        || data.GetName().ToLower().Equals("might") || data.GetName().ToLower().Equals("will") ||
+                        data.GetName().ToLower().Equals("would") || data.GetName().ToLower().Equals("as") ||
+                        data.GetName().ToLower().Equals("with")
+                        || data.GetName().ToLower().Equals("for") || data.GetName().ToLower().Equals("will") ||
+                        data.GetName().ToLower().Equals("would")
+                        || data.GetName().ToLower().Equals("than") ||
+                        data.GetName().ToLower().Equals("$")
+                        || data.GetName().ToLower().Equals("and") || data.GetName().ToLower().Equals("or") ||
+                        data.GetName().ToLower().Equals("of")
+                        || data.GetName().ToLower().Equals("are") || data.GetName().ToLower().Equals("be") ||
+                        data.GetName().ToLower().Equals("been") || data.GetName().ToLower().Equals("'re")
+                        || data.GetName().ToLower().Equals("do") || data.GetName().ToLower().Equals("few") ||
+                        data.GetName().ToLower().Equals("there") || data.GetName().ToLower().Equals("in")
+                        || data.GetName().ToLower().Equals("up") || data.GetName().ToLower().Equals("down"))
                     {
                         sum = 0;
                     }
@@ -759,6 +755,11 @@ namespace ParseTree
                         .Replace("-RCB-", "}").Replace("-lrb-", "(").Replace("-rrb-", ")")
                         .Replace("-lsb-", "[").Replace("-rsb-", "]").Replace("-lcb-", "{")
                         .Replace("-rcb-", "}");
+                }
+
+                if (IsDummyNode())
+                {
+                    return "";
                 }
 
                 return " ";
