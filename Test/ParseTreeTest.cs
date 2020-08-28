@@ -1,4 +1,5 @@
 using NUnit.Framework;
+using ParseTree;
 
 namespace Test
 {
@@ -86,5 +87,31 @@ namespace Test
             Assert.AreEqual(" This time around , they 're moving even faster .", parseTree4.ToSentence());
             Assert.AreEqual(" Ad Notes ... .", parseTree5.ToSentence());
         }
+        
+        [Test]
+        public void TestConstituentSpan(){
+            var span = parseTree1.ConstituentSpanList()[6];
+            Assert.AreEqual(new Symbol("PP-LOC"), span.GetConstituent());
+            Assert.AreEqual(4, span.GetStart());
+            Assert.AreEqual(9, span.GetEnd());
+            span = parseTree2.ConstituentSpanList()[10];
+            Assert.AreEqual(new Symbol("VB"), span.GetConstituent());
+            Assert.AreEqual(7, span.GetStart());
+            Assert.AreEqual(8, span.GetEnd());
+            span = parseTree3.ConstituentSpanList()[0];
+            Assert.AreEqual(new Symbol("S"), span.GetConstituent());
+            Assert.AreEqual(1, span.GetStart());
+            Assert.AreEqual(11, span.GetEnd());
+            span = parseTree4.ConstituentSpanList()[5];
+            Assert.AreEqual(new Symbol("ADVP"), span.GetConstituent());
+            Assert.AreEqual(3, span.GetStart());
+            Assert.AreEqual(4, span.GetEnd());
+            span = parseTree5.ConstituentSpanList()[4];
+            Assert.AreEqual(new Symbol("."), span.GetConstituent());
+            Assert.AreEqual(4, span.GetStart());
+            Assert.AreEqual(5, span.GetEnd());
+        }
+
+        
     }
 }

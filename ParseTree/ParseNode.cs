@@ -872,5 +872,17 @@ namespace ParseTree
                 aChild.MoveRight(node);
             }
         }
+        
+        public void ConstituentSpanList(int startIndex, List<ConstituentSpan> list){
+            if (children.Count > 0){
+                list.Add(new ConstituentSpan(data, startIndex, startIndex + LeafCount()));
+            }
+            int total = 0;
+            foreach (var parseNode in children){
+                parseNode.ConstituentSpanList(startIndex + total, list);
+                total += parseNode.LeafCount();
+            }
+        }
+
     }
 }

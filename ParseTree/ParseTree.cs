@@ -207,6 +207,18 @@ namespace ParseTree
         {
             return root.WordCount(excludeStopWords);
         }
+        
+        /**
+         * <summary>Generates a list of constituents in the parse tree and their spans.</summary>
+         * <returns> A list of constituents in the parse tree and their spans.</returns>
+         */
+        public List<ConstituentSpan> ConstituentSpanList(){
+            var result = new List<ConstituentSpan>();
+            if (root != null){
+                root.ConstituentSpanList(1, result);
+            }
+            return result;
+        }
 
     }
 }
