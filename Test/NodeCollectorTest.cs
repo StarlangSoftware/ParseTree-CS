@@ -38,6 +38,21 @@ namespace Test
         }
 
         [Test]
+        public void TestCollectNone()
+        {
+            NodeCollector nodeCollector1 = new NodeCollector(parseTree1.GetRoot(), null);
+            Assert.AreEqual(34, nodeCollector1.Collect().Count);
+            nodeCollector1 = new NodeCollector(parseTree2.GetRoot(), null);
+            Assert.AreEqual(39, nodeCollector1.Collect().Count);
+            nodeCollector1 = new NodeCollector(parseTree3.GetRoot(), null);
+            Assert.AreEqual(32, nodeCollector1.Collect().Count);
+            nodeCollector1 = new NodeCollector(parseTree4.GetRoot(), null);
+            Assert.AreEqual(28, nodeCollector1.Collect().Count);
+            nodeCollector1 = new NodeCollector(parseTree5.GetRoot(), null);
+            Assert.AreEqual(9, nodeCollector1.Collect().Count);
+        }
+
+        [Test]
         public void TestCollectEnglish()
         {
             var nodeCollector1 = new NodeCollector(parseTree1.GetRoot(), new IsEnglishLeaf());

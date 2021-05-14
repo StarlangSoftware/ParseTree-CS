@@ -27,16 +27,13 @@ namespace ParseTree
          */
         private void CollectNodes(ParseNode parseNode, List<ParseNode> collected)
         {
-            if (_condition.Satisfies(parseNode))
+            if (_condition == null || _condition.Satisfies(parseNode))
             {
                 collected.Add(parseNode);
             }
-            else
+            for (var i = 0; i < parseNode.NumberOfChildren(); i++)
             {
-                for (var i = 0; i < parseNode.NumberOfChildren(); i++)
-                {
-                    CollectNodes(parseNode.GetChild(i), collected);
-                }
+                CollectNodes(parseNode.GetChild(i), collected);
             }
         }
 
