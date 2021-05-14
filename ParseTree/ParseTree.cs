@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
-using DependencyParser;
+using DependencyParser.Universal;
 using ParseTree.NodeCondition;
 
 namespace ParseTree

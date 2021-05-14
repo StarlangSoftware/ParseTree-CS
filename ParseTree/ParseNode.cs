@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using DependencyParser;
+using DependencyParser.Universal;
 using Dictionary.Dictionary;
 
 namespace ParseTree
