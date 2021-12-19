@@ -860,9 +860,18 @@ namespace ParseTree
             {
                 if (children[i] == node)
                 {
-                    var tmp = children[i];
-                    children[i] = children[(i + 1) % children.Count];
-                    children[(i + 1) % children.Count] = tmp;
+                    if (i == children.Count - 1)
+                    {
+                        var tmp = children[0];
+                        children[0] = children[children.Count - 1];
+                        children[children.Count - 1] = tmp;
+                    }
+                    else
+                    {
+                        var tmp = children[i];
+                        children[i] = children[(i + 1) % children.Count];
+                        children[(i + 1) % children.Count] = tmp;
+                    }
                     return;
                 }
             }
