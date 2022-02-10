@@ -4,11 +4,11 @@
         <TargetFramework>netcoreapp2.2</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageId>NlpToolkit-ParseTree</PackageId>
-        <PackageVersion>1.0.4</PackageVersion>
+        <PackageVersion>1.0.5</PackageVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="NlpToolkit-DependencyParser" Version="1.0.8" />
+      <PackageReference Include="NlpToolkit-DependencyParser" Version="1.0.12" />
     </ItemGroup>
 
 </Project>
