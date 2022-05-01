@@ -6,7 +6,7 @@ namespace ParseTree
 {
     public class ParseNode
     {
-        protected List<ParseNode> children;
+        protected List<ParseNode> children = new List<ParseNode>();
         protected ParseNode parent;
         protected Symbol data;
 
