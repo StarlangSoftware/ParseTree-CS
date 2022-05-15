@@ -4,10 +4,10 @@ namespace ParseTree
 {
     public class ParallelTreeBank
     {
-        protected readonly TreeBank _fromTreeBank;
-        protected readonly TreeBank _toTreeBank;
+        protected TreeBank _fromTreeBank;
+        protected TreeBank _toTreeBank;
 
-        private void RemoveDifferentTrees()
+        protected void RemoveDifferentTrees()
         {
             int i, j;
             i = 0;
@@ -41,6 +41,11 @@ namespace ParseTree
             {
                 _toTreeBank.RemoveTree(j);
             }
+        }
+
+        public ParallelTreeBank()
+        {
+            
         }
 
         public ParallelTreeBank(string folder1, string folder2)
