@@ -9,6 +9,7 @@ namespace ParseTree
     {
         private static readonly List<string> SentenceLabels =
             new List<string>(new[] {"SINV", "SBARQ", "SBAR", "SQ", "S"});
+        protected string _name;
 
         protected ParseNode root;
 
@@ -49,7 +50,17 @@ namespace ParseTree
                 root = null;
             }
         }
+        
+        public void SetName(string name)
+        {
+            this._name = name;
+        }
 
+        public string GetName()
+        {
+            return _name;
+        }
+        
         /**
          * <summary> Gets the next leaf node after the given leaf node in the ParseTree.</summary>
          * <param name="parseNode">ParseNode for which next node is calculated.</param>

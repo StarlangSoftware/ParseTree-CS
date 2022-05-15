@@ -23,10 +23,12 @@ namespace ParseTree
         {
             parseTrees = new List<ParseTree>();
             var listOfFiles = Directory.GetFiles(folder);
+            Array.Sort(listOfFiles);
             foreach (var file in listOfFiles){
                 var parseTree = new ParseTree(file);
                 if (parseTree.GetRoot() != null)
                 {
+                    parseTree.SetName(RemovePath(file));
                     parseTrees.Add(parseTree);
                 }
                 else
@@ -47,12 +49,14 @@ namespace ParseTree
         {
             parseTrees = new List<ParseTree>();
             var listOfFiles = Directory.GetFiles(folder);
+            Array.Sort(listOfFiles);
             foreach (var file in listOfFiles){
                 if (!file.Contains(pattern))
                     continue;
                 var parseTree = new ParseTree(file);
                 if (parseTree.GetRoot() != null)
                 {
+                    parseTree.SetName(RemovePath(file));
                     parseTrees.Add(parseTree);
                 }
                 else
@@ -76,10 +80,27 @@ namespace ParseTree
             parseTrees = new List<ParseTree>();
             for (var i = from; i <= to; i++)
             {
-                parseTrees.Add(new ParseTree(folder + "/" + string.Format("{0:D4}", i) + pattern));
+                var parseTree = new ParseTree(folder + "/" + string.Format("{0:D4}", i) + pattern);
+                parseTree.SetName(string.Format("{0:D4}", i) + pattern);
+                parseTrees.Add(parseTree);
             }
         }
 
+        protected string RemovePath(string fileName)
+        {
+            if (fileName.Contains("/"))
+            {
+                return fileName.Substring(fileName.LastIndexOf("/", StringComparison.Ordinal) + 1);
+            }
+
+            if (fileName.Contains("\\"))
+            {
+                return fileName.Substring(fileName.LastIndexOf("\\", StringComparison.Ordinal) + 1);
+            }
+
+            return fileName;
+        }
+        
         /**
          * <summary> Strips punctuation symbols from all parseTrees in this TreeBank.</summary>
          */
@@ -125,6 +146,10 @@ namespace ParseTree
         public ParseTree Get(int index)
         {
             return parseTrees[index];
+        }
+        
+        public void RemoveTree(int index){
+            parseTrees.RemoveAt(index);
         }
     }
 }
