@@ -338,11 +338,7 @@ namespace ParseTree
 
             return null;
         }
-
-        public void ConstructUniversalDependencies(Dictionary<ParseNode, UniversalDependencyRelation> dependencies)
-        {
-        }
-
+        
         /**
          * <summary> Returns an iterator for the child nodes of this {@link ParseNode}.</summary>
          * <returns>Iterator for the children of this very node.</returns>
@@ -882,6 +878,11 @@ namespace ParseTree
             }
         }
         
+        /// <summary>
+        /// Construct recursively the constituent span list of a subtree rooted at this node.
+        /// </summary>
+        /// <param name="startIndex">Start index of the leftmost leaf node of this subtree.</param>
+        /// <param name="list">Returned span list.</param>
         public void ConstituentSpanList(int startIndex, List<ConstituentSpan> list){
             if (children.Count > 0){
                 list.Add(new ConstituentSpan(data, startIndex, startIndex + LeafCount()));

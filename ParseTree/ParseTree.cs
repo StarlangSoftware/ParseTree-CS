@@ -51,11 +51,19 @@ namespace ParseTree
             }
         }
         
+        /// <summary>
+        /// Mutator for the name attribute.
+        /// </summary>
+        /// <param name="name">Name of the parse tree.</param>
         public void SetName(string name)
         {
             this._name = name;
         }
 
+        /// <summary>
+        /// Accessor for the name attribute.
+        /// </summary>
+        /// <returns>Name of the parse tree.</returns>
         public string GetName()
         {
             return _name;
@@ -101,13 +109,6 @@ namespace ParseTree
             return null;
         }
 
-        public Dictionary<ParseNode, UniversalDependencyRelation> ConstructUniversalDependencies()
-        {
-            var universalDependencies = new Dictionary<ParseNode, UniversalDependencyRelation>();
-            root.ConstructUniversalDependencies(universalDependencies);
-            return universalDependencies;
-        }
-
         /**
          * <summary> Calls recursive method to calculate the number of all nodes, which have more than one children.</summary>
          * <returns>Number of all nodes, which have more than one children.</returns>
@@ -135,6 +136,10 @@ namespace ParseTree
             return root.LeafCount();
         }
 
+        /// <summary>
+        /// Checks if the sentence is a full sentence or not. A sentence is a full sentence is its root tag is S, SINV, etc.
+        /// </summary>
+        /// <returns>True if the sentence is a full sentence, false otherwise.</returns>
         public bool IsFullSentence()
         {
             if (root != null && SentenceLabels.Contains(root.GetData().GetName()))

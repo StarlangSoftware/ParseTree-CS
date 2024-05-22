@@ -86,6 +86,11 @@ namespace ParseTree
             }
         }
 
+        /// <summary>
+        /// Removes the leading path name from the file name to get raw file name.
+        /// </summary>
+        /// <param name="fileName">Original file name containing path name</param>
+        /// <returns>Raw file name such as 0123.train</returns>
         protected string RemovePath(string fileName)
         {
             if (fileName.Contains("/"))
@@ -148,6 +153,10 @@ namespace ParseTree
             return parseTrees[index];
         }
         
+        /// <summary>
+        /// Removes the parse tree at position index from the treebank.
+        /// </summary>
+        /// <param name="index">Position of the tree in the treebank.</param>
         public void RemoveTree(int index){
             parseTrees.RemoveAt(index);
         }
